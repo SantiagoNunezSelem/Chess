@@ -1,0 +1,17 @@
+.chess-square {
+    width:var(--square-size);
+    height:var(--square-size);
+}
+
+.chess-square img {
+    width:70px;
+}
+/*
+.square-white {
+    background-color: var(--square-color-1);
+}
+
+.square-black {
+    background-color: var(--square-color-2);
+}
+*/

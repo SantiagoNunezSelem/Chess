@@ -1,0 +1,15 @@
+#board-border {
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--board-border-color);  
+    padding: 40px;
+}
+
+#board-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: var(--board-size);
+    height: var(--board-size);
+    padding: 0;
+    background-image: url(../img/board-background.png);
+}

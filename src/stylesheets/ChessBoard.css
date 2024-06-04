@@ -7,6 +7,7 @@
 
 #board-container {
     display: flex;
+    position: relative;
     flex-wrap: wrap;
     width: var(--board-size);
     height: var(--board-size);

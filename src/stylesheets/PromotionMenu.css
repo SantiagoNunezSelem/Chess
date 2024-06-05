@@ -10,10 +10,6 @@
     background-color: rgb(241, 225, 225);
 }
 
-#promotion-menu-container div{
-    border: solid 0.01px black;
-}
-
 #promotion-menu-container div:hover{
     cursor: pointer;
 }

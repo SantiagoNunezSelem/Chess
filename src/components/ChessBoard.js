@@ -266,6 +266,35 @@ function ChessBoard(){
                 })
                 return true
             }
+
+            //The condition about if it´s possible to castle was made on possibleKingMoves
+            //Castle (white) 
+            if(x1 === 5 && y1 === 1 && getPieceName(x1,y1) === "king"){
+                //Long castle
+                if(x2 === 3 && y2 === 1){
+                    movePiecesCastle(x1,y1,x2,y2,1,1,4,1)
+                    return true
+                }
+                //Short castle
+                if(x2 === 7 && y2 === 1){
+                    movePiecesCastle(x1,y1,x2,y2,8,1,6,1)
+                    return true
+                }
+            }
+
+            //Castle (black)
+            if(x1 === 5 && y1 === 8 && getPieceName(x1,y1) === "king"){
+                //Long castle
+                if(x2 === 3 && y2 === 8){
+                    movePiecesCastle(x1,y1,x2,y2,1,8,4,8)
+                    return true
+                }
+                //Short castle
+                if(x2 === 7 && y2 === 8){
+                    movePiecesCastle(x1,y1,x2,y2,8,8,6,8)
+                    return true
+                }
+            }
         }
     }
 
@@ -299,6 +328,45 @@ function ChessBoard(){
         setPieces(newPosition)
 
         setGameTurn(gameTurn+1)
+
+        setClickCoordinates({x:null,y:null})
+        setPieceMoveCoordinates({})
+        setDestinationMoveCoordinates({})
+    }
+
+    function movePiecesCastle(x1,y1,x2,y2,x1Rook,y1Rook,x2Rook,y2Rook) {
+        
+        if(squareHasPiece(x1,y1) && squareHasPiece(x1Rook,y1Rook)){
+            console.log("entro")
+            let newPosition = pieces
+
+            //Move the king
+            newPosition = newPosition.map(piece => {
+                const updatedPiece = { ...piece }
+                if (piece.x === x1 && piece.y === y1) {
+                    updatedPiece.x = x2
+                    updatedPiece.y = y2
+                }
+                return updatedPiece;
+            });
+
+            //Move the rook
+            newPosition = newPosition.map(piece => {
+                const updatedPiece = { ...piece }
+                if (piece.x === x1Rook && piece.y === y1Rook) {
+                    updatedPiece.x = x2Rook
+                    updatedPiece.y = y2Rook
+                }
+                return updatedPiece;
+            });
+
+            //Remove the piece from the past position
+            newPosition = newPosition.filter(piece => !(piece.x === x1 && piece.y === y1))
+            newPosition = newPosition.filter(piece => !(piece.x === x1Rook && piece.y === y1Rook))
+
+            setPieces(newPosition)
+            setGameTurn(gameTurn+1)
+        }
 
         setClickCoordinates({x:null,y:null})
         setPieceMoveCoordinates({})

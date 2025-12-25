@@ -655,6 +655,57 @@ function ChessBoard(){
         return [{x:null,y:null}]
     }
 
+    function piezaClavada() {
+        // Se analiza si la pieza seleccionada se enucentra clavada en alguna direccion
+        // Sin importar la pieza aliada se analiza si existe una diagonal, vertical u horizantal en el que el rey sea la primera pieza encontrada
+        // En tal caso se analiza si en dicha vertical/horizontal u diagonal en sentido contrario existe una pieza enemiga que amenaze en dicha direccion.
+        // Si se encuentra una pieza enemiga que amenaze en dicha direccion, la pieza aliada no podra moverse en otra direccion que no sea la amenaza.
+        // Ejemplo: tengo un peon que esta en diagonal a mi rey, busco en dicha diagonal si hay pienza enemiga. hay pieza enemiga y es una dama. Entonces el peon solo podra moverse en dicha diagonal.
+    }
+
+    function legalMoveProtectKing() {
+        // Si el estado es check = true, se analizan los movimientos legales de las piezas aliadas para protejer el rey.
+        // Si la pieza que hace jaque es un caballo y es unica, solo se puede mover el rey o capturar el caballo.
+        // Si la pieza que hace jaque es una pieza que se mueve en linea (torre, alfil, dama) y es unica, se puede mover el rey, capturar la pieza o interponerse entre la pieza y el rey.
+    }
+
+    function squareUnderAttack() {
+        // Se analiza si la casilla se encuentra amenazada por alguna pieza enemiga
+    }
+
+    function isCheck() {
+        // SquareUnderAttack(king); // se analiza si el rey esta bajo ataque luego del movimiento del rival
+        
+
+        // isCheckMate: analizar si es jaquemate
+        // Si no es jaquemate:
+            // definir estado: setCheck(true);
+            // guardar la posicion de la pieza/s que hace jaque y la posicion del rey amenazado
+    }
+
+    function isCheckMate() {
+        // 1- Se analiza si el rey tiene movimientos legales. Dentro de la funcion movimientos legales tienen que estar la funcion squareUnderAttack por cada uno.
+        // 2- En caso de ser solo una pieza que hace jaque:
+            // 2.1 Se analiza si alguna pieza puede capturar la pieza que esta haciendo jaque.
+            // 2.2 Se analiza si alguna pieza puede interponerse entre la pieza que hace jaque y el rey.
+        // Si ninguna de las condiciones se cumple, es jaquemate. handleCheckMate()
+        // Si alguna de las condiciones se cumple, se permite al jugador continuar con el juego y el debera tocar la pieza que le permita defender su rey.
+    }
+
+    function handleCheckMate() {
+        // Finaliza el juego
+    }
+
+    function isStaleMate() {
+        // Se analiza si el jugador que tiene el turno no tiene movimientos legales y su rey no esta en jaque.
+        // Se analiza si hay material suficiente para continuar la partida.
+        // En caso de cumplirse las condiciones, se declara tablas.
+    }
+
+    function handleStaleMate() {
+        // Finaliza el juego
+    }
+
     return(
         <div id="board-border" className="container">
             <div id="board-container" className="container board">
